@@ -13,11 +13,14 @@ const LINE =
 const lengthInCodePoints = [...LINE].length;
 if (lengthInCodePoints < 1 || lengthInCodePoints > 200) {
   throw new Error(
-    `Line must be 1-200 code points, got ${lengthInCodePoints}.`,
+    `Line must be 1-200 code points for the One-Line Laugh Sprint gate, got ${lengthInCodePoints}.`,
   );
 }
 if (LINE.trim() === "") {
   throw new Error("Line must contain non-whitespace text.");
+}
+if (!/[A-Za-z]/.test(LINE)) {
+  throw new Error("Line must contain at least one letter.");
 }
 if (LINE.includes("\n") || LINE.includes("\r")) {
   throw new Error("Line must be a single line.");
